@@ -1,0 +1,12 @@
+cff-version: 1.0.0
+autores:
+- apellido: "Cabrera"
+  nombre: "Matias"
+- apellido: "Benítez"
+  nombre: "Maximiliano"
+- apellido: "Lorenzo"
+  nombre: "Agustín"
+titulo: "Monty Hall Game"
+version: 1.0.0
+fecha-realizado: 2023-03-31
+url: "https://github.com/MatiasCab/PyE.git"
