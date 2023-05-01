@@ -1,9 +1,8 @@
 import random
-from fractions import Fraction
 
 def diceGame(firstParticipantName, secondParticipantName):
-    firstParticipantScore = playerDie(None)
-    secondParticipantScore = playerDie(firstParticipantScore)
+    firstParticipantScore = playerDice(None)
+    secondParticipantScore = playerDice(firstParticipantScore)
     
     if firstParticipantScore > secondParticipantScore:
         return  firstParticipantName
@@ -12,20 +11,18 @@ def diceGame(firstParticipantName, secondParticipantName):
     else:
         return "EMPATE"
 
-def playerDie(opponentScore):
+def playerDice(opponentScore):
     participantScore = 0
-    attemps = 1
+    attempts = 1
     acceptScore = False
     
     firstParticipantThrow = [0, 0]
-    while attemps <= 2 and not acceptScore:
-        attemps += 1
+    while attempts <= 2 and not acceptScore:
+        attempts += 1
         
         dice1 = throwDice() if firstParticipantThrow[0] != 4 or participantScore == 0 else 4
 
         if (participantScore == 0 or participantScore == 4 or firstParticipantThrow[1] != 4):
-            #print(firstParticipantThrow)
-            #print("-----")
             dice2 = throwDice()
         else:
             dice2 = 4
@@ -44,8 +41,6 @@ def playerDie(opponentScore):
         else: 
             if secondParticipantEstrategy(participantScore, opponentScore):
                 acceptScore = True
-        #print(firstParticipantThrow)
-        #print(participantScore)
 
     return participantScore
 
@@ -94,14 +89,11 @@ def printAnalyzer(numberOfGames):
         if (gameData[i][0] == "EMPATE"):
             print(f"Empataron {favorableResults} ({victoriesPercentage}%) veces")
         else:
-            print(f"{gameData[i][0]} ganó {favorableResults} ({victoriesPercentage}%) veces")
+            print(f"{gameData[i][0]} gano {favorableResults} ({victoriesPercentage}%) veces")
         
         print(f"Frecuencia: {favorableResults}\nFrecuencia relativa: {favorableResults/numberOfGames}")
-        print(f"Probabilidad: {Fraction(favorableResults,numberOfGames)}\n")
-    print("-----------------------------------------\n")
-    return
+        print("-----------------------------------------\n")
 
 printAnalyzer(1000)
 printAnalyzer(10000)
-printAnalyzer(10000000)
-#printAnalyzer(1)
+printAnalyzer(100000)
