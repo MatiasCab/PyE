@@ -16,24 +16,24 @@ def playerDice(opponentScore):
     attempts = 1
     acceptScore = False
     
-    firstParticipantThrow = [0, 0]
+    participantThrow = [0, 0]
     while attempts <= 2 and not acceptScore:
         attempts += 1
         
-        dice1 = throwDice() if firstParticipantThrow[0] != 4 or participantScore == 0 else 4
+        dice1 = throwDice() if participantThrow[0] != 4 or participantScore == 0 else 4
 
-        if (participantScore == 0 or participantScore == 4 or firstParticipantThrow[1] != 4):
+        if (participantScore == 0 or participantScore == 4 or participantThrow[1] != 4):
             dice2 = throwDice()
         else:
             dice2 = 4
         
-        firstParticipantThrow[0] = dice1
-        firstParticipantThrow[1] = dice2
+        participantThrow[0] = dice1
+        participantThrow[1] = dice2
         
-        if (firstParticipantThrow[0] == 4):
-            participantScore = firstParticipantThrow[1]
-        elif (firstParticipantThrow[1] == 4):
-            participantScore = firstParticipantThrow[0]
+        if (participantThrow[0] == 4):
+            participantScore = participantThrow[1]
+        elif (participantThrow[1] == 4):
+            participantScore = participantThrow[0]
         
         if opponentScore is None:
             if participantScore > 3:
