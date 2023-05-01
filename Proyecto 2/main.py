@@ -15,13 +15,13 @@ def playerDice(opponentScore):
     participantScore = 0
     attempts = 1
     acceptScore = False
-    
     participantThrow = [0, 0]
+    
     while attempts <= 2 and not acceptScore:
         attempts += 1
-        
+    
         dice1 = throwDice() if participantThrow[0] != 4 or participantScore == 0 else 4
-
+        
         if (participantScore == 0 or participantScore == 4 or participantThrow[1] != 4):
             dice2 = throwDice()
         else:
@@ -36,11 +36,9 @@ def playerDice(opponentScore):
             participantScore = participantThrow[0]
         
         if opponentScore is None:
-            if participantScore > 3:
-                acceptScore = True
+            acceptScore = participantScore > 3
         else: 
-            if secondParticipantEstrategy(participantScore, opponentScore):
-                acceptScore = True
+            acceptScore = secondParticipantEstrategy(participantScore, opponentScore)
 
     return participantScore
 
