@@ -15,25 +15,21 @@ def playerDice(opponentScore):
     participantScore = 0
     attempts = 1
     acceptScore = False
-    participantThrow = [0, 0]
+    dice1, dice2 = 0, 0
     
     while attempts <= 2 and not acceptScore:
         attempts += 1
-    
-        dice1 = throwDice() if participantThrow[0] != 4 or participantScore == 0 else 4
         
-        if (participantScore == 0 or participantScore == 4 or participantThrow[1] != 4):
+        if (dice1 != 4):
+            dice1 = throwDice()
+
+        if (participantScore == 4 or dice2 != 4):
             dice2 = throwDice()
-        else:
-            dice2 = 4
         
-        participantThrow[0] = dice1
-        participantThrow[1] = dice2
-        
-        if (participantThrow[0] == 4):
-            participantScore = participantThrow[1]
-        elif (participantThrow[1] == 4):
-            participantScore = participantThrow[0]
+        if (dice1 == 4):
+            participantScore = dice2
+        elif (dice2 == 4):
+            participantScore = dice1
         
         if opponentScore is None:
             acceptScore = participantScore > 3
