@@ -34,14 +34,14 @@ def playerDice(opponentScore):
         if opponentScore is None:
             acceptScore = participantScore > 3
         else: 
-            acceptScore = secondParticipantEstrategy(participantScore, opponentScore)
+            acceptScore = secondParticipantStrategy(participantScore, opponentScore)
 
     return participantScore
 
 def throwDice():
     return random.randint(1, 6)
 
-def secondParticipantEstrategy(participantScore, opponentScore):
+def secondParticipantStrategy(participantScore, opponentScore):
     if (participantScore > opponentScore):
         return True
     elif (participantScore < opponentScore):
@@ -58,7 +58,7 @@ def diceGameAnalyzer(numberOfGames):
     firstParticipantVictories = 0
     secondParticipantVictories = 0
     draws = 0
-    for i in range(numberOfGames):
+    for _ in range(numberOfGames):
         gameChampion = diceGame(firstParticipantName, secondParticipantName)
         if (firstParticipantName == gameChampion):
             firstParticipantVictories += 1
