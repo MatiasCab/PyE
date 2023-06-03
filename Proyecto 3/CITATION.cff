@@ -1,0 +1,12 @@
+cff-version: 1.0.0
+autores:
+- apellido: "Cabrera"
+  nombre: "Matias"
+- apellido: "Benítez"
+  nombre: "Maximiliano"
+- apellido: "Lorenzo"
+  nombre: "Agustín"
+titulo: "Distributions Analytics"
+version: 1.0.0
+fecha-realizado: 2023-06-03
+url: "https://github.com/MatiasCab/PyE.git"
