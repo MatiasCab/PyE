@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from statistics import median, mode
 from numpy import mean
-
+#FIXME PREGUNTAR ESTO.
 def salary_data(data_frame, min_salary = 0, max_salary = 100000000):
     data_frame['Salario'] = pd.to_numeric(data_frame['Salario'], errors='coerce')
     valid_salary = data_frame[(data_frame['Salario'] > min_salary) & (data_frame['Salario'] <= max_salary)]
@@ -59,14 +59,25 @@ def salary_graphics_by_sex_and_locations(data_frame):
     
     salary_by_sex_men = salary_data_by_sex(data_frame, sex=1)
     box1.boxplot(salary_by_sex_men)
-    #box1.title('Hombres')
+    box1.set_title('Hombres')
+    
     
     salary_by_sex_woman = salary_data_by_sex(data_frame, sex=2)
     box2.boxplot(salary_by_sex_woman)
-    #box2.title('Mujeres')
+    box2.set_title('Mujeres')
+    
+    salary_by_location_capital = salary_data_by_location(data_frame, locations=[1])
+    box3.boxplot(salary_by_location_capital)
+    box3.set_title('Capital')
+    
+    salary_by_location_inter = salary_data_by_location(data_frame, locations=[2, 3])
+    box4.boxplot(salary_by_location_inter)
+    box4.set_title('Interior')
     
     box_info(box1, salary_by_sex_men)
     box_info(box2, salary_by_sex_woman)
+    box_info(box3, salary_by_location_capital)  
+    box_info(box4, salary_by_location_inter)
     
     plt.tight_layout()
     plt.show()

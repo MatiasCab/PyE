@@ -40,4 +40,3 @@ def unemployment_rate_graphics(data_frame):
     plt.title(text)
     plt.axis('equal')
     plt.show()
-    
