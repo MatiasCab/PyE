@@ -7,7 +7,7 @@ data_path = 'ECH_2022.csv'
 
 data_frame = pd.read_csv(data_path, delimiter= ';')
 
-unemployment_rate_graphics(data_frame)  
+unemployment_rate_graphics(data_frame)
 salary_graphics(data_frame)
 salary_graphics_by_sex_and_locations(data_frame)
 unemployment_stimation(data_frame)
@@ -19,8 +19,6 @@ unemployment_stimation(data_frame)
 #PEA: Ocupados + Desocupados
 #Las colas sirven: (Sus analisis son valorados)
 
-
-
 #No puedo decir que el valor de tasa de desempleo es mas grande.
 #Preguntar lo del boxplot
 #Explicar lo de H0
@@ -28,7 +26,6 @@ unemployment_stimation(data_frame)
 #Se pone el decimel en cantidad de desempleados? Se saca eldecimla y se redondea para arriba.
 #en el intervalo de confianza el de abajo para abajo el de arriba para arriba.
 #LO DEDIVIDIR LA DIFERENCIA DE LMENOOR Y MAYOR CON EL UN MILON PARA TENER ELÑ PORCENTAJE DE DIFERENCIA
-
 
 #Poner que son distintas
 #Widh de 20 pone guolle.
