@@ -22,9 +22,9 @@ def salary_graphics(data_frame):
     fig, ((hist1, hist2), (box1, box2)) = plt.subplots(2, 2, figsize=(12, 9))
     
     unlimited_data = salary_data(data_frame)
-    hist1.hist(unlimited_data, color="Red",bins = int(180/5))
+    hist1.hist(unlimited_data, color="Red",bins = 150)
     
-    limited_data = salary_data(data_frame, min_salary=1, max_salary=9999999)
+    limited_data = salary_data(data_frame, min_salary=1, max_salary=300000)
     hist2.hist(limited_data, color="Blue",bins = 150)
     box1.boxplot(limited_data)
     box2.boxplot(limited_data, showfliers=False)
