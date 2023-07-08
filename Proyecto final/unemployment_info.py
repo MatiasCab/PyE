@@ -11,14 +11,11 @@ def unemployment_stimation(data_frame):
     unemployment_population =  population * rate
     
     confident_level = 0.95
-    #error_margin = stats.norm.ppf(1 - (1 - confident_level) / 2) * np.sqrt(rate * (1 - rate) / population)
     error_standar = rate * ( 1 - rate)
     error_standar = a.sqrt(error_standar / data_frame['PEA'].value_counts()[1])
     error_standar = error_standar * population
     
     conf_int = stats.norm.interval(0.95, loc=unemployment_population, scale=error_standar)
-
-    #confident_interval = (unemployment_population - error_margin, unemployment_population + error_margin)
     
     stimation_info = f'''-----------EJERCICIO B ESTIMACIÓN-----------\n
                         \n
@@ -28,8 +25,8 @@ def unemployment_stimation(data_frame):
                         
     unemployment_rate_2021 = 0.07
     print(rate)
-    statistic, p_value = stats.ttest_ind([unemployment_rate_2021], rate, alternative='greater') #Prueba de una cola.
-    #p_value es como el porcentaje de confianza que dice que el primer paramtro es mayor o igual al segundo
+    statistic, p_value = stats.ttest_ind([unemployment_rate_2021], rate, alternative='greater')
+    
     one_tail = p_value
     
     men_salaries = salary_data_by_sex(data_frame, sex=1)
@@ -46,11 +43,13 @@ def unemployment_stimation(data_frame):
                         \n\n
                         2) Con una certeza del 99%, si se distingue el salario por genero, se puede decir que:\n
                         {'Hay una diferencia de salarios entre hombres y mujeres' if p_value < (1 - 0.99) else 'No hay una diferencia de salariso entre hombres y mujeres' }''' #FIXME ESTA BIEN ESTAS CONCLUSIONES?
-        
-    
-    #En el de los salarios preguntar por la aleatoriedad y el 99%.
+
     window = tk.Tk()
     tk.Label(window, text=stimation_info, relief="solid", borderwidth=2, font=("Arial", 12)).pack()
     tk.Label(window, text='\n\n\n', font=("Arial", 12)).pack()
     tk.Label(window, text=comparative_info, relief="solid", borderwidth=2, font=("Arial", 12)).pack()
     window.mainloop()
+
+
+#p_value es como el porcentaje de confianza que dice que el primer paramtro es mayor o igual al segundo
+ #Prueba de una cola.

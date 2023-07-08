@@ -3,8 +3,6 @@ from unemployment_rate import unemployment_rate_graphics
 from unemployment_info import unemployment_stimation
 import pandas as pd
 
-#FIXME NOMBRES DE CONVENCION
-
 data_path = 'ECH_2022.csv'
 
 data_frame = pd.read_csv(data_path, delimiter= ';')

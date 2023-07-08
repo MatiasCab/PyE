@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from statistics import median, mode
 from numpy import mean
-#FIXME PREGUNTAR ESTO.
+
 def salary_data(data_frame, min_salary = 0, max_salary = 100000000):
     data_frame['Salario'] = pd.to_numeric(data_frame['Salario'], errors='coerce')
     valid_salary = data_frame[(data_frame['Salario'] > min_salary) & (data_frame['Salario'] <= max_salary)]
@@ -23,11 +23,15 @@ def salary_graphics(data_frame):
     
     unlimited_data = salary_data(data_frame)
     hist1.hist(unlimited_data, color="Red",bins = 150)
+    hist1.set_title('Salario sin tope')
     
     limited_data = salary_data(data_frame, min_salary=1, max_salary=300000)
     hist2.hist(limited_data, color="Blue",bins = 150)
+    hist2.set_title('Salario con tope de 300000')
     box1.boxplot(limited_data)
+    box1.set_title('Con tope de 300000 y outliers')
     box2.boxplot(limited_data, showfliers=False)
+    box2.set_title('Con tope de 300000 sin outliers')
     
     min_value = limited_data.min()
     max_value = limited_data.max()
@@ -35,7 +39,7 @@ def salary_graphics(data_frame):
     Q2 = limited_data.quantile(0.5)
     Q3 = limited_data.quantile(0.75)
     text = f'Mediana: {median(limited_data)}\nModa: {mode(limited_data)}\nMedia: {round(mean(limited_data), 2)}\nMinimo: {min_value}\nMaximo: {max_value}\nCuartil Q1: {Q1}\nCuartil Q2: {Q2}\nCuartil Q3: {Q3}'
-    box2.text(0.04, 0.5, text, transform=box2.transAxes, fontsize=10,
+    box1.text(0.04, 0.5, text, transform=box1.transAxes, fontsize=10,
                  bbox=dict(facecolor='white', edgecolor='black', alpha=0.6),
                  ha='left')
     

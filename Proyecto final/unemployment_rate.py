@@ -19,12 +19,12 @@ def unemployment_rate_graphics(data_frame):
     ages_intervals_info = {}
     
     for i in ages_interval:
-        age_unemployment_rate = unemployment_rate_by_age(data_frame, i[0], i[1])#FIXME PODIRA IR EN OTRO LADO
+        age_unemployment_rate = unemployment_rate_by_age(data_frame, i[0], i[1])
         label = ''
         if (i[0] < 14):
             label = f'Menor a {i[1]}'
         elif (i[1] < 14):
-            label = f'Mayor a {i[0]}'
+            label = f'Mayor a {i[0] -1}'
         else:
             label = f'{i[0]} - {i[1]}'
         
